@@ -1,0 +1,121 @@
+.home {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+}
+
+.home-header {
+    margin-bottom: 36px;
+}
+
+.home-eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 8px;
+}
+
+.home-title {
+    font-size: 42px;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 6px;
+}
+
+.home-subtitle {
+    color: var(--slate);
+    font-size: 15px;
+}
+
+.home-actions {
+    margin-bottom: 32px;
+}
+
+.home-section-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-bottom: 14px;
+}
+
+.viaje-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.viaje-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(26,22,18,.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    cursor: pointer;
+    transition: box-shadow 0.2s, transform 0.2s;
+    text-decoration: none;
+}
+.viaje-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.viaje-card-body {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.viaje-card-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--horizon-light);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.viaje-card-info h3 {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 3px;
+}
+
+.viaje-card-info p {
+    font-size: 13px;
+    color: var(--slate);
+}
+
+.viaje-card-arrow {
+    font-size: 18px;
+    color: var(--sand-mid);
+    transition: color 0.15s, transform 0.15s;
+}
+.viaje-card:hover .viaje-card-arrow {
+    color: var(--horizon);
+    transform: translateX(3px);
+}
+
+.home-empty {
+    text-align: center;
+    padding: 48px 24px;
+    background: var(--white);
+    border-radius: var(--radius);
+    border: 1.5px dashed var(--sand-mid);
+}
+.home-empty p {
+    color: var(--slate);
+    font-size: 15px;
+    margin-top: 8px;
+}

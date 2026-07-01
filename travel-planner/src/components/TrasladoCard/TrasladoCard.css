@@ -1,0 +1,157 @@
+.traslado-platform {
+
+    display: inline-block;
+
+    margin-bottom: 12px;
+
+    color: #345b9d;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: .08em;
+
+}
+
+.traslado-provider {
+
+    margin: 0 0 20px;
+
+    font-size: 22px;
+
+}
+
+.traslado-route {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 24px;
+
+}
+
+.traslado-route>div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+}
+
+.traslado-code {
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+}
+
+.traslado-label {
+
+    margin-top: 6px;
+
+    color: #888;
+
+    font-size: 13px;
+
+}
+
+.traslado-arrow {
+
+    font-size: 24px;
+
+    color: #3d6fb4;
+
+    flex: 1;
+
+    text-align: center;
+
+}
+
+.traslado-info {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 14px;
+
+    margin-bottom: 20px;
+
+}
+
+.traslado-info>div {
+
+    display: flex;
+
+    gap: 8px;
+
+    align-items: center;
+
+    font-size: 15px;
+
+}
+
+.traslado-price {
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    color: #d66a2c;
+
+}
+
+.item-card{
+
+    position:relative;
+
+}
+
+.item-card-delete{
+
+    position:absolute;
+
+    top:12px;
+
+    right:12px;
+
+    width:34px;
+
+    height:34px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#f3f3f3;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.item-card-delete:hover{
+
+    background:#e7e7e7;
+
+    transform:scale(1.05);
+
+}

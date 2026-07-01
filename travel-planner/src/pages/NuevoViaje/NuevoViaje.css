@@ -1,0 +1,80 @@
+.nuevo-viaje {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+}
+
+.nuevo-viaje-header {
+    margin-bottom: 36px;
+}
+
+.nuevo-viaje-eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 8px;
+}
+
+.nuevo-viaje-title {
+    font-size: 36px;
+    letter-spacing: -0.8px;
+}
+
+.form-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(26,22,18,.05);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-field label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    letter-spacing: 0.01em;
+}
+
+.form-input {
+    padding: 13px 15px;
+    border-radius: var(--radius-sm);
+    border: 1.5px solid var(--sand-mid);
+    background: var(--sand);
+    font-size: 15px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    width: 100%;
+}
+.form-input:focus {
+    border-color: var(--horizon);
+    background: var(--white);
+    box-shadow: 0 0 0 3px var(--horizon-light);
+}
+.form-input::placeholder {
+    color: var(--slate);
+    opacity: 0.7;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.form-divider {
+    border: none;
+    border-top: 1px solid var(--sand-mid);
+    margin: 4px 0;
+}

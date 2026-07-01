@@ -1,0 +1,73 @@
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(26,22,18,.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 200;
+    animation: overlay-in 0.2s ease;
+}
+
+@media (min-width: 600px) {
+    .modal-overlay { align-items: center; }
+}
+
+@keyframes overlay-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.modal {
+    width: 100%;
+    max-width: 440px;
+    background: var(--white);
+    border-radius: var(--radius) var(--radius) 0 0;
+    padding: 28px 24px 36px;
+    animation: modal-up 0.25s cubic-bezier(.16,1,.3,1);
+    position: relative;
+}
+
+@media (min-width: 600px) {
+    .modal {
+        border-radius: var(--radius);
+        padding: 32px;
+    }
+}
+
+@keyframes modal-up {
+    from { transform: translateY(40px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+}
+
+.modal-drag {
+    width: 40px;
+    height: 4px;
+    background: var(--sand-mid);
+    border-radius: 2px;
+    margin: 0 auto 24px;
+}
+
+@media (min-width: 600px) {
+    .modal-drag { display: none; }
+}
+
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: var(--sand);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--slate);
+    transition: background 0.15s;
+}
+.modal-close:hover { background: var(--sand-mid); }
