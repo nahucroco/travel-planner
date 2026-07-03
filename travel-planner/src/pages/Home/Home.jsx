@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getTrips } from "../../api/trips";
 import Navbar from "../../components/Navbar/Navbar";
 import Button from "../../components/Button/Button";
 import "./Home.css";
@@ -6,11 +8,24 @@ import "./Home.css";
 function Home() {
     const navigate = useNavigate();
 
-    const viajes = [
-        { id: 1, nombre: "Villa La Angostura", fechas: "4–9 ene 2027", emoji: "🏔️" },
-        { id: 2, nombre: "Bariloche",           fechas: "15–20 jul 2027", emoji: "⛷️" },
-    ];
+    const [viajes, setViajes] = useState([]);
 
+    useEffect(() => {
+        async function cargarViajes() {
+            try {
+                const data = await getTrips();
+
+                console.log("Viajes:", data);
+
+                setViajes(data);
+            } catch (error) {
+                console.error("ERROR:", error);
+            }
+        }
+
+        cargarViajes();
+    }, []);
+    
     return (
         <>
             <Navbar />
@@ -38,10 +53,12 @@ function Home() {
                                     onClick={() => navigate(`/viajes/${viaje.id}`)}
                                 >
                                     <div className="viaje-card-body">
-                                        <div className="viaje-card-icon">{viaje.emoji}</div>
+                                        <div className="viaje-card-icon">🧳</div>
                                         <div className="viaje-card-info">
-                                            <h3>{viaje.nombre}</h3>
-                                            <p>📅 {viaje.fechas}</p>
+                                            <h3>{viaje.name}</h3>
+                                            <p>
+                                                📅 {viaje.start_date} - {viaje.end_date}
+                                            </p>
                                         </div>
                                     </div>
                                     <span className="viaje-card-arrow">›</span>
