@@ -4,14 +4,24 @@ import easyocr
 from models.traslado import Traslado
 
 
-_reader = easyocr.Reader(
-    ["es", "en"]
-)
+import easyocr
+
+_reader = None
+
+def get_reader():
+    global _reader
+
+    if _reader is None:
+        _reader = easyocr.Reader(["es", "en"])
+
+    return _reader
 
 
 def _leer_texto(imagen):
 
-    resultado = _reader.readtext(imagen)
+    reader = get_reader()
+
+    resultado = reader.readtext(imagen)
 
     bloques = [
         item[1].strip()

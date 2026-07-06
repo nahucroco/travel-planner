@@ -13,20 +13,25 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
+        "http://127.0.0.1:5173",
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+
 @app.get("/")
 def home():
     return {"status": "ok"}
 
 
+import traceback
+
+
 @app.post("/scrape")
 def scrape(request: ScrapeRequest):
-    
+
     print(request.url)
 
     try:
@@ -40,28 +45,25 @@ def scrape(request: ScrapeRequest):
         if alojamiento is None:
             raise HTTPException(
                 status_code=500,
-                detail="No se pudo obtener información del alojamiento."
+                detail="No se pudo obtener información del alojamiento.",
             )
 
         return alojamiento.__dict__
 
-    except ValueError as e:
-        raise HTTPException(status_code=400, detail=str(e))
-    
+    except Exception as e:
+        traceback.print_exc()
+        raise
+
+
 @app.post("/ocr/vuelo")
-async def ocr_vuelo(
-    imagen: UploadFile = File(...)
-):
+async def ocr_vuelo(imagen: UploadFile = File(...)):
     archivo_temporal = None
 
     try:
         # Crear archivo temporal conservando la extensión
         extension = os.path.splitext(imagen.filename)[1]
 
-        with tempfile.NamedTemporaryFile(
-            delete=False,
-            suffix=extension
-        ) as temp:
+        with tempfile.NamedTemporaryFile(delete=False, suffix=extension) as temp:
 
             archivo_temporal = temp.name
             temp.write(await imagen.read())
@@ -70,17 +72,13 @@ async def ocr_vuelo(
 
         if vuelo is None:
             raise HTTPException(
-                status_code=500,
-                detail="No se pudo obtener información del vuelo."
+                status_code=500, detail="No se pudo obtener información del vuelo."
             )
 
         return vuelo.__dict__
 
     except ValueError as e:
-        raise HTTPException(
-            status_code=400,
-            detail=str(e)
-        )
+        raise HTTPException(status_code=400, detail=str(e))
 
     finally:
         if archivo_temporal and os.path.exists(archivo_temporal):

@@ -8,6 +8,8 @@ class Trip(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name="owned_trips",
+        null=True,
+        blank=True,
     )
 
     name = models.CharField(max_length=150)

@@ -1,9 +1,9 @@
-import API_URL from "./api";
+const SCRAPER_URL = "http://127.0.0.1:8001";
 
 export async function importarItem(datos) {
 
     const response = await fetch(
-        API_URL + "/scrape",
+        `${SCRAPER_URL}/scrape`,
         {
             method: "POST",
             headers: {
@@ -17,6 +17,5 @@ export async function importarItem(datos) {
         throw new Error("No se pudo importar.");
     }
 
-    return await response.json();
-
+    return response.json();
 }

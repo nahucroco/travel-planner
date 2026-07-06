@@ -9,6 +9,10 @@ import ImportarTrasladoModal from "../../components/ImportarTrasladoModal/Import
 import { importarTraslado } from "../../services/ocr";
 import "./Viaje.css";
 import { Trash2 } from "lucide-react";
+import { useParams } from "react-router-dom";
+import { createAccommodation } from "../../services/accommodations";
+import { mapScrapedAccommodation } from "../../mappers/accommodationMapper";
+
 
 function ItemCard({ item, tipo, onDelete }) {
     return (
@@ -39,6 +43,7 @@ function ItemCard({ item, tipo, onDelete }) {
 }
 
 function Viaje() {
+    const { id: tripId } = useParams();
     const [modalAbierto, setModalAbierto] = useState(false);
     const [modalTrasladoAbierto, setModalTrasladoAbierto] = useState(false);
     const [tipoImportacion, setTipoImportacion] = useState("");
@@ -232,16 +237,26 @@ function Viaje() {
                     onClose={() => setModalAbierto(false)}
                     onImportar={async (url) => {
                         try {
-                            const item = await importarItem({
+                            const scraped = await importarItem({
                                 url,
                                 check_in: "2027-01-04",
                                 check_out: "2027-01-09",
                                 viajeros: 2,
                             });
+
+                            const accommodation = mapScrapedAccommodation(
+                                scraped,
+                                tripId
+                            );
+
+                            console.log("Accommodation a guardar:", accommodation);
+
+                            const savedAccommodation = await createAccommodation(
+                                accommodation
+                            );
+
                             if (tipoImportacion === "hospedaje") {
-                                setHospedajes(prev => [...prev, item]);
-                            } else {
-                                setActividades(prev => [...prev, item]);
+                                setHospedajes(prev => [...prev, savedAccommodation]);
                             }
                             setModalAbierto(false);
                         } catch (error) {

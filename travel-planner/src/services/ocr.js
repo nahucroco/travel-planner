@@ -1,4 +1,4 @@
-import API_URL from "./api";
+import { SCRAPER_API_URL } from "./api";
 
 export async function importarTraslado(imagen) {
 

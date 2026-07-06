@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "users",
     "trips",
     "corsheaders",
+    "accommodations",
 ]
 
 MIDDLEWARE = [

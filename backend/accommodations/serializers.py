@@ -1,15 +1,14 @@
 from rest_framework import serializers
 
-from .models import Trip
+from .models import Accommodation
 
 
-class TripSerializer(serializers.ModelSerializer):
+class AccommodationSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Trip
+        model = Accommodation
         fields = "__all__"
         read_only_fields = (
             "id",
-            "owner",
             "created_at",
             "updated_at",
         )
